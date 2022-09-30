@@ -5,6 +5,11 @@ const argv = require('yargs')
     type: 'number',
     demandOption: true,
   })
+  .option('l', {
+    alias: 'listar',
+    type: 'boolean',
+    default: false,
+  })
   .check((argv, options) => {
     console.log(argv.b)
     if (isNaN(argv.b)) {
@@ -13,20 +18,9 @@ const argv = require('yargs')
     return true
   }).argv
 
-/**
- * option('l')
- * listar
- * boolean
- * default:false
- *
- * Esta variable la usaremos para definir si queremos mostrar la tabla por consolo o no
- */
-
 console.clear()
-
 // console.log(argv)
-// console.log('base: yargs', argv.b)
 
-crearArchivo(argv.b)
+crearArchivo(argv.b, argv.l)
   .then((nombreArchivo) => console.log(nombreArchivo, 'creado'))
   .catch(console.error)
