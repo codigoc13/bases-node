@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/codigoc13/bases-node#readme",
   "dependencies": {
-    "color": "^4.2.3"
+    "color": "^4.2.3",
+    "yargs": "^17.5.1"
   }
 }
