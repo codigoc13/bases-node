@@ -1,18 +1,32 @@
 const { crearArchivo } = require('./helpers/multiplicar')
-const argv = require('yargs').argv
+const argv = require('yargs')
+  .option('b', {
+    alias: 'base',
+    type: 'number',
+    demandOption: true,
+  })
+  .check((argv, options) => {
+    console.log(argv.b)
+    if (isNaN(argv.b)) {
+      throw 'La base tiene que ser un número'
+    }
+    return true
+  }).argv
+
+/**
+ * option('l')
+ * listar
+ * boolean
+ * default:false
+ *
+ * Esta variable la usaremos para definir si queremos mostrar la tabla por consolo o no
+ */
 
 console.clear()
 
-console.log(process.argv)
-console.log(argv)
-console.log('base: yargs', argv.base)
+// console.log(argv)
+// console.log('base: yargs', argv.b)
 
-// const [, , arg3 = 'base=5'] = process.argv
-// const [, base = 5] = arg3.split('=')
-// console.log(base)
-
-// const base = 6
-
-// crearArchivo(base)
-//   .then((nombreArchivo) => console.log(nombreArchivo, 'creado'))
-//   .catch(console.error)
+crearArchivo(argv.b)
+  .then((nombreArchivo) => console.log(nombreArchivo, 'creado'))
+  .catch(console.error)
