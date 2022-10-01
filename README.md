@@ -14,6 +14,7 @@ Options:
 ### Probando
 
 - Clonar el proyecto
+- Crear carpeta `salidas` en _/src_.
 - `npm install`
 - `node src/app.js` Seguir instrucciones.
 
